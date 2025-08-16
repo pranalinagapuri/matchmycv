@@ -1,109 +1,91 @@
-# MatchMyCV 📄✨
+# MatchMyCV 🎯
+An AI-powered resume–job matcher built with **FastAPI + SQLite + Adzuna Jobs API**.
 
-**MatchMyCV** is a smart resume–job matching tool that helps recruiters quickly find the best resumes for a given job description.  
-It parses resumes, stores them in a database, and ranks them against job postings using NLP + job market APIs.
+Recruiters can:
+- Upload candidate resumes (PDF/DOCX)
+- Search live job postings
+- Automatically compare resume skills with job descriptions
+- Get a similarity score to speed up shortlisting
 
 ---
 
 ## 🚀 Features
-
-- 📤 Upload resumes (PDF/DOCX) via API
-- 🗄️ Store resumes in a SQLite database
-- 🔍 Search & rank resumes against a job description
-- 🌐 Fetch live job descriptions using the Adzuna API
-- ⚡ Built with **FastAPI** for blazing-fast performance
-- 🧰 Easy setup with `requirements.txt`
-
----
-
-## 🛠 Tech Stack
-
-- **Backend:** FastAPI (Python)
-- **Database:** SQLite + SQLAlchemy
-- **NLP/Matching:** Python libraries (scikit-learn, etc.)
-- **External API:** Adzuna Jobs API
-- **Environment:** Virtualenv / venv
+- Resume parsing (text extraction from PDF/DOCX)
+- Job search integration with [Adzuna API](https://developer.adzuna.com/)
+- Cosine similarity scoring between resumes & job descriptions
+- FastAPI backend with interactive **Swagger UI**
+- SQLite database for storing resumes
 
 ---
 
 ## 📂 Project Structure
-
-```
+```bash
 backend/
 │── app/
-│   └── main.py          # FastAPI routes & resume matching logic
-│── uploads/             # Resume upload folder
-│── database.py          # SQLite + SQLAlchemy models
-│── resumes.db           # SQLite database file
+│   ├── main.py          # FastAPI endpoints
+│   ├── database.py      # SQLite database setup
+│── uploads/             # Uploaded resumes
 │── requirements.txt     # Python dependencies
-│── README.md            # Project documentation
-│── .gitignore           # Ignore env, db, uploads, etc.
+│── resumes.db           # SQLite DB
+│── .gitignore           # Ignored files
 ```
 
 ---
 
-## ⚙️ Setup Instructions (Local)
+## ⚙️ Setup Instructions
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/pranalinagapuri/matchmycv.git
-   cd matchmycv/backend
-   ```
+### 1. Clone repo
+```bash
+git clone https://github.com/pranalinagapuri/matchmycv.git
+cd matchmycv/backend
+```
 
-2. **Create virtual environment**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate   # Mac/Linux
-   venv\Scripts\activate      # Windows
-   ```
+### 2. Create virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
+```
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-4. **Create `.env` file** (inside `backend/`)
-   ```bash
-   ADZUNA_APP_ID=your_app_id
-   ADZUNA_APP_KEY=your_app_key
-   ```
+### 4. Add API keys
+Create a `.env` file in `backend/` with:
+```ini
+ADZUNA_APP_ID=your_app_id
+ADZUNA_APP_KEY=your_api_key
+```
 
-5. **Run the app**
-   ```bash
-   uvicorn app.main:app --reload
-   ```
+### 5. Run the app
+```bash
+uvicorn app.main:app --reload
+```
 
-6. **Open in browser**
-   ```
-   http://127.0.0.1:8000/docs
-   ```
-   (Interactive Swagger UI 🚀)
+Then open:
+👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
-## 🎯 Example Usage
+## 📸 Screenshots
 
-- **Upload Resume:** `POST /upload/`  
-- **Search Jobs:** `GET /search/?query=python+developer&location=uk`  
-- **Match Resume to Job:** `POST /match/`
-
----
-
-## 🔮 Next Steps (Future Improvements)
-
-- 🌐 Frontend (React/Next.js) for recruiter-friendly UI  
-- ☁️ Deploy backend to **Render / Railway / AWS**  
-- 📊 Advanced ranking with embeddings / AI models  
-- 👥 User authentication (Recruiter login)  
+- **Upload Resume** → parses skills
+- **Search Job** → fetches Adzuna jobs
+- **Match** → similarity score
 
 ---
 
-## 👩‍💻 Author
-
-**Pranali Nagapuri**  
-📌 Open to Software Engineering / Data roles  
-🔗 [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com/pranalinagapuri)  
+## 🛠 Tech Stack
+- **FastAPI** (Python backend)
+- **SQLite** (database)
+- **Adzuna API** (job search)
+- **Pydantic & SQLAlchemy** (data validation & ORM)
 
 ---
 
-⭐ If you like this project, consider giving it a star on GitHub!
+## 📌 Next Steps (Optional)
+- Build a React/HTML frontend for recruiters
+- Deploy backend to Render/Railway/Heroku
+- Add more NLP (spacy, transformers) for better parsing
