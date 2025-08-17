@@ -1,50 +1,21 @@
-# MatchMyCV 🎯
-An AI-powered resume–job matcher built with **FastAPI + SQLite + Adzuna Jobs API**.
+# MatchMyCV
 
-Recruiters can:
-- Upload candidate resumes (PDF/DOCX)
-- Search live job postings
-- Automatically compare resume skills with job descriptions
-- Get a similarity score to speed up shortlisting
+This project lets you upload a resume, parse skills, and match with job postings from the Adzuna API.
 
 ---
 
-## 🚀 Features
-- Resume parsing (text extraction from PDF/DOCX)
-- Job search integration with [Adzuna API](https://developer.adzuna.com/)
-- Cosine similarity scoring between resumes & job descriptions
-- FastAPI backend with interactive **Swagger UI**
-- SQLite database for storing resumes
+## 🚀 Setup
 
----
-
-## 📂 Project Structure
-```bash
-backend/
-│── app/
-│   ├── main.py          # FastAPI endpoints
-│   ├── database.py      # SQLite database setup
-│── uploads/             # Uploaded resumes
-│── requirements.txt     # Python dependencies
-│── resumes.db           # SQLite DB
-│── .gitignore           # Ignored files
-```
-
----
-
-## ⚙️ Setup Instructions
-
-### 1. Clone repo
+### 1. Clone the repo
 ```bash
 git clone https://github.com/pranalinagapuri/matchmycv.git
 cd matchmycv/backend
 ```
 
-### 2. Create virtual environment
+### 2. Create a virtual environment
 ```bash
 python3 -m venv venv
-source venv/bin/activate   # macOS/Linux
-venv\Scripts\activate      # Windows
+source venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -52,11 +23,16 @@ venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Add API keys
-Create a `.env` file in `backend/` with:
-```ini
-ADZUNA_APP_ID=your_app_id
-ADZUNA_APP_KEY=your_api_key
+### 4. Setup environment variables
+Copy the example file:
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` with your real keys:
+```
+ADZUNA_APP_ID=your_real_app_id
+ADZUNA_APP_KEY=your_real_app_key
 ```
 
 ### 5. Run the app
@@ -64,28 +40,34 @@ ADZUNA_APP_KEY=your_api_key
 uvicorn app.main:app --reload
 ```
 
-Then open:
-👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+Then open: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
-## 📸 Screenshots
-
-- **Upload Resume** → parses skills
-- **Search Job** → fetches Adzuna jobs
-- **Match** → similarity score
+## 📂 Project Structure
+```
+├── app/
+│   └── main.py
+├── uploads/
+│   └── sample_cv.pdf
+├── requirements.txt
+├── database.py
+├── resumes.db
+├── .env.example
+└── README.md
+```
 
 ---
 
-## 🛠 Tech Stack
-- **FastAPI** (Python backend)
-- **SQLite** (database)
-- **Adzuna API** (job search)
-- **Pydantic & SQLAlchemy** (data validation & ORM)
+## 🔧 Tech Stack
+- **FastAPI** (Python backend)  
+- **SQLite** (database)  
+- **Adzuna API** (job search)  
+- **Pydantic & SQLAlchemy** (validation & ORM)  
 
 ---
 
-## 📌 Next Steps (Optional)
-- Build a React/HTML frontend for recruiters
-- Deploy backend to Render/Railway/Heroku
-- Add more NLP (spacy, transformers) for better parsing
+## ✨ Features
+- Upload Resume → parses skills  
+- Search Job → fetches Adzuna jobs  
+- Match → calculates similarity score  
